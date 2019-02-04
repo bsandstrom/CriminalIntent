@@ -2,10 +2,14 @@ package com.brentsandstrom.criminalintent;
 
 import android.support.v4.app.Fragment;
 
-public class CrimeActivity extends SingleFragmentActivity {
+/**
+ * Created by Brent on 2/4/2019.
+ */
+
+public class CrimeListActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return new CrimeFragment();
+        return new CrimeListFragment();
     }
 }
