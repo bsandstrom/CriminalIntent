@@ -67,7 +67,7 @@ public class CrimeListFragment extends Fragment {
             mDateTextView.setText(DateFormat.getInstance().format(mCrime.getDate()));
             mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
-//git test
+//git test1
         @Override
         public void onClick(View v) {
             Toast.makeText(getActivity(), mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
