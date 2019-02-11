@@ -7,6 +7,7 @@ import java.util.UUID;
  * Created by Brent on 2/3/2019.
  */
 
+// Just a data storage class
 public class Crime {
 
     private UUID mId;

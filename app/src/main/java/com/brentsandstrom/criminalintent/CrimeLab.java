@@ -9,7 +9,7 @@ import java.util.UUID;
 /**
  * Created by Brent on 2/3/2019.
  */
-
+//A singleton class that stores a list of crimes. global data storage
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
 

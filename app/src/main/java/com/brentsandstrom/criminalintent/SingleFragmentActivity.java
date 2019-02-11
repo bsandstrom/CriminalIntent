@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
  * Created by Brent on 2/4/2019.
  */
 
+//Abstract activity class that deals with oncreate method. Just override createFragment to create an
+// activity that displays a fragment
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     protected abstract Fragment createFragment();

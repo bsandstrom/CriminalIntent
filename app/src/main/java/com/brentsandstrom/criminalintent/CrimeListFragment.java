@@ -1,5 +1,6 @@
 package com.brentsandstrom.criminalintent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.List;
  * Created by Brent on 2/4/2019.
  */
 
+// A fragment containing the RecyclerView, which contains all the crime list items.
 public class CrimeListFragment extends Fragment {
 
     private RecyclerView mCrimeRecyclerView;
@@ -35,14 +36,25 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    //
     private void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
 
-        //Create the Crime adapter
-        mAdapter = new CrimeAdapter(crimes);
-        //Pass the adapter to the recycler view
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            //Create the Crime adapter
+            mAdapter = new CrimeAdapter(crimes);
+            //Pass the adapter to the recycler view
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     //Holds the list_item_crime view to be used by the recyclerView
@@ -67,10 +79,11 @@ public class CrimeListFragment extends Fragment {
             mDateTextView.setText(DateFormat.getInstance().format(mCrime.getDate()));
             mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
-//git test2
+
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(), mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
+            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            startActivity(intent);
         }
     }
 
