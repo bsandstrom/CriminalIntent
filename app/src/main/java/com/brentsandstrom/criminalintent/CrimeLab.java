@@ -15,6 +15,11 @@ public class CrimeLab {
 
     private List<Crime> mCrimes;
 
+    /**
+     * Gets the singleton instance of CrimeLab
+     * @param context
+     * @return The one instance of CrimeLab
+     */
     public static CrimeLab get(Context context) {
         if (sCrimeLab == null) {
             sCrimeLab = new CrimeLab(context);
